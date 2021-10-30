@@ -1,27 +1,20 @@
+export class Element {
 
-import SvgBuilder2 from 'svg-builder';
+    children: (Element | string)[];
+    tag: string;
+    attributes: {[key: string]: string | number};
 
-type ElemData = {[key: string]: string | number};
+    constructor(tag: string, attributes: {[key: string]: string | number}) {
+        this.tag = tag;
+        this.attributes = Object.assign({xmlns: "http://www.w3.org/2000/svg"}, attributes);
+        this.children = [];
+    }
 
-type SvgBuilderType = {
-    root: string,
-    render: () => string,
-    rect: (a: ElemData) => void,
-    width: (w: number) => void,
-    height: (h: number) => void,
-    text: (a: ElemData, s: string) => void,
-    addElement: (a: {[key: string]: unknown}) => void,
-    newInstance: () => SvgBuilderType
-}
+    render() {
+        return `<${this.tag} ${Object.keys(this.attributes).map((a) => `${a}=\"${this.attributes[a]}\"`).join(' ')}>${this.children.map((a) => typeof a === 'string' ? a : a.render()).join('')}</${this.tag}>`;
+    }
 
-export const SvgBuilder = SvgBuilder2 as SvgBuilderType;
-
-export const createCard = () => {
-    return `
-    <rect xmlns="http://www.w3.org/2000/svg" data-testid="card-bg" x="0.5" y="0.5" rx="4.5" height="99%" stroke="#e4e2e2" width="479" fill="#2e3440" stroke-opacity="0"/>
-    `;
-};
-
-export const createSVG = (body) => {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="480" height="120" viewBox="0 0 480 120" fill="none">${body}`;
+    addChild(child: Element | string) {
+        this.children.push(child);
+    }
 };
