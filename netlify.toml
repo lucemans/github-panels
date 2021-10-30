@@ -11,3 +11,11 @@
   from = "/repo-card"
   to = "/.netlify/functions/repo-card"
   status = 200
+[[redirects]]
+  from = "/computer"
+  to = "/.netlify/functions/computer"
+  status = 200
+[[redirects]]
+  from = "/package-card"
+  to = "/.netlify/functions/package-card"
+  status = 200

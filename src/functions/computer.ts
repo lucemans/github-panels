@@ -8,10 +8,6 @@ export async function handler(
     context: Context
 ) {
     try {
-        const repo = event.queryStringParameters['repo'];
-        const logo = event.queryStringParameters['logo'];
-        const query_label = event.queryStringParameters['label'];
-
         const svg = new Element('svg', { width: 480, height: 120 });
 
         const styleElem = new Element('style', {});
@@ -38,22 +34,12 @@ export async function handler(
         });
         svg.addChild(bgRect);
 
-        const label = query_label || repo || 'Not Found';
-
-        const split = label.split('\/');
         const labelElement = new Element('text', {
             x: 100,
             y: 50,
             class: "name"
         });
-        for (let i = 0; i < split.length; i++) {
-            const tspan = new Element('tspan', {style: 'fill: #' + rgbHex(255,255,255,((i+1)/split.length))});
-            tspan.addChild(split[i]);
-            labelElement.addChild(tspan);
-            if (i !== split.length - 1) {
-                labelElement.addChild('/');
-            }
-        }
+        labelElement.addChild('luc.computer');
         svg.addChild(labelElement);
 
         return {
