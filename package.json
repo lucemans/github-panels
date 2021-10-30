@@ -1,0 +1,17 @@
+{
+  "name": "github-panels",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lucemans/github-panels.git",
+  "author": "Lucemans <luc@lucemans.nl>",
+  "license": "MIT",
+  "scripts": {
+    "build": "netlify-lambda build src",
+    "ts-check": "tsc --noEmit --lib ES2015 ./src/*.ts"
+  },
+  "dependencies": {
+    "@babel/preset-typescript": "^7.16.0",
+    "aws-lambda": "^1.0.6",
+    "netlify-lambda": "^2.0.15"
+  }
+}
