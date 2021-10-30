@@ -6,12 +6,14 @@
   "author": "Lucemans <luc@lucemans.nl>",
   "license": "MIT",
   "scripts": {
-    "build": "netlify-lambda build src",
+    "build": "netlify-lambda build src/functions",
     "ts-check": "tsc --noEmit --lib ES2015 ./src/*.ts"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.16.0",
+    "@types/aws-lambda": "^8.10.84",
     "aws-lambda": "^1.0.6",
-    "netlify-lambda": "^2.0.15"
+    "netlify-lambda": "^2.0.15",
+    "svg-builder": "^1.0.0"
   }
 }

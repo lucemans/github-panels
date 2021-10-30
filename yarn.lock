@@ -929,6 +929,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@types/aws-lambda@^8.10.84":
+  version "8.10.84"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.84.tgz#b1f391ceeb6908b28d8416d93f27afe8d1348d4e"
+  integrity sha512-5V78eLtmN0d4RA14hKDwcsMQRl3JotQJlhGFDBo/jdE2TyDFRaYwB/UmMUC4SzhSvRGn+YMkh7jGPnXi8COAng==
+
 "@types/json-schema@^7.0.5":
   version "7.0.9"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
@@ -3923,6 +3928,11 @@ supports-color@^5.3.0:
   integrity sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
   dependencies:
     has-flag "^3.0.0"
+
+svg-builder@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/svg-builder/-/svg-builder-1.0.0.tgz#16a3e834780b2319971d2a393c017a5f0fb49c30"
+  integrity sha512-Alb20G9MRQLXnc8YhVfimUJdHqQB2KK1/J/0pAlAoRdtD+V8ryoZCNtkDBAGxQuNyd+lX9qb0RKpZ3kso45K+w==
 
 tapable@^1.0.0, tapable@^1.1.3:
   version "1.1.3"

@@ -1,8 +1,13 @@
 [build]
   command = "yarn build"
-  functions = "lambda"
+  functions = "lambda/functions"
 
 [[redirects]]
   from = "/"
   to = "/.netlify/functions/index"
+  status = 200
+
+[[redirects]]
+  from = "/repo-card"
+  to = "/.netlify/functions/repo-card"
   status = 200
