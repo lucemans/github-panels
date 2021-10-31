@@ -17,7 +17,7 @@ export async function handler(
         const styleElem = new Element('style', {});
         styleElem.addChild(`
             .name {
-                font: bold 30px sans-serif;
+                font: bold 24px sans-serif;
                 fill: white;
             }
             .downloads {

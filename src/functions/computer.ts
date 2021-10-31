@@ -13,10 +13,10 @@ export async function handler(
         const styleElem = new Element('style', {});
         styleElem.addChild(`
             .name {
-                font: bold 30px sans-serif;
+                font: bold 24px sans-serif;
                 fill: white;
             }
-            .downloads {
+            .lastPost {
                 font: bold 15px sans-serif;
                 fill: white;
             }`);
@@ -41,6 +41,19 @@ export async function handler(
         });
         labelElement.addChild('luc.computer');
         svg.addChild(labelElement);
+
+        const rssFeed = await axios.get('https://luc.computer/rss.xml');
+        const a = rssFeed.data;
+        const lastPost = a.toString().match(/\<item\>.*\<\/item\>/)[0].match(/\<title\>\<\!\[CDATA\[(.*?)\]\]\>\<\/title\>/)[1];
+        console.log(lastPost);
+
+        const lastPostElement = new Element('text', {
+            x: 100,
+            y: 80,
+            class: "lastPost"
+        });
+        lastPostElement.addChild(lastPost);
+        svg.addChild(lastPostElement);
 
         return {
             statusCode: 200,
