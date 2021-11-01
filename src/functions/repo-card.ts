@@ -42,8 +42,8 @@ export async function handler(
 
         const split = label.split('\/');
         const labelElement = new Element('text', {
-            x: 100,
-            y: 50,
+            x: 120,
+            y: 55,
             class: "name"
         });
         for (let i = 0; i < split.length; i++) {

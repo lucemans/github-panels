@@ -49,8 +49,8 @@ export async function handler(
         svg.addChild(bgHighlight);
 
         const labelElement = new Element('text', {
-            x: 100,
-            y: 50,
+            x: 120,
+            y: 55,
             class: "name"
         });
         labelElement.addChild('luc.computer');
@@ -62,14 +62,23 @@ export async function handler(
         console.log(lastPost);
 
         const lastPostElement = new Element('text', {
-            x: 100,
-            y: 80,
+            x: 120,
+            y: 75,
             class: "lastPost"
         });
         const cuttoff = 40;
-        lastPostElement.addChild(lastPost.length > cuttoff ? (lastPost.substr(0,cuttoff-3) + "...") : lastPost);
+        lastPostElement.addChild(lastPost.length > cuttoff ? (lastPost.substr(0,cuttoff-3).trim() + "...") : lastPost);
         svg.addChild(lastPostElement);
 
+        const imageElement = new Element('image', {
+            width: 60,
+            height: 60,
+            x: 40,
+            y: 20,
+            href: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/laptop_1f4bb.png"
+        });
+        svg.addChild(imageElement);
+        
         return {
             statusCode: 200,
             headers: {

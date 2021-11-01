@@ -72,8 +72,8 @@ export async function handler(
 
         const split = label.split('\/');
         const labelElement = new Element('text', {
-            x: 100,
-            y: 50,
+            x: 120,
+            y: 55,
             class: "name"
         });
         for (let i = 0; i < split.length; i++) {
@@ -87,12 +87,21 @@ export async function handler(
         svg.addChild(labelElement);
     
         const downloadsElem = new Element('text', {
-            x: 100,
+            x: 120,
             y: 75,
             class: "downloads"
         });
         downloadsElem.addChild(pkgdownloads_found ? (pkgdownload.downloads + " downloads") : 'No data yet.');
         svg.addChild(downloadsElem);
+
+        const imageElement = new Element('image', {
+            width: 60,
+            height: 60,
+            x: 40,
+            y: 30,
+            href: "https://blog.nativescript.org/images/0tw5g4s3bv4xoxr6espf.png"
+        });
+        svg.addChild(imageElement);
 
         return {
             statusCode: 200,
