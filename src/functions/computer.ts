@@ -75,10 +75,10 @@ export async function handler(
             height: 60,
             x: 40,
             y: 20,
-            href: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/laptop_1f4bb.png"
+            href: "laptop.png"
         });
         svg.addChild(imageElement);
-        
+
         return {
             statusCode: 200,
             headers: {
