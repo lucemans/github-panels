@@ -12,6 +12,9 @@ export async function handler(
 
         const styleElem = new Element('style', {});
         styleElem.addChild(`
+            .highlight {
+
+            }
             .name {
                 font: bold 24px sans-serif;
                 fill: white;
@@ -19,6 +22,7 @@ export async function handler(
             .lastPost {
                 font: bold 15px sans-serif;
                 fill: white;
+                text-overflow: ellipsis;
             }`);
         svg.addChild(styleElem);
 
@@ -34,6 +38,16 @@ export async function handler(
         });
         svg.addChild(bgRect);
 
+        const bgHighlight = new Element('rect', { 
+            x: 0.5,
+            y: parseInt(svg.attributes['height'].toString())-0.5-10,
+            height: 10,
+            width: "100%",
+            fill: '#ff11aa',
+            rx: 4.5
+        });
+        svg.addChild(bgHighlight);
+
         const labelElement = new Element('text', {
             x: 100,
             y: 50,
@@ -44,7 +58,7 @@ export async function handler(
 
         const rssFeed = await axios.get('https://luc.computer/rss.xml');
         const a = rssFeed.data;
-        const lastPost = a.toString().match(/\<item\>.*\<\/item\>/)[0].match(/\<title\>\<\!\[CDATA\[(.*?)\]\]\>\<\/title\>/)[1];
+        const lastPost: string = a.toString().match(/\<item\>.*\<\/item\>/)[0].match(/\<title\>\<\!\[CDATA\[(.*?)\]\]\>\<\/title\>/)[1].toString();
         console.log(lastPost);
 
         const lastPostElement = new Element('text', {
@@ -52,7 +66,8 @@ export async function handler(
             y: 80,
             class: "lastPost"
         });
-        lastPostElement.addChild(lastPost);
+        const cuttoff = 40;
+        lastPostElement.addChild(lastPost.length > cuttoff ? (lastPost.substr(0,cuttoff-3) + "...") : lastPost);
         svg.addChild(lastPostElement);
 
         return {
